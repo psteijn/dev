@@ -1,14 +1,23 @@
 #pragma once
+
+#include "TSodokuCell.h"
+
 class TSodokuBoard
 {
 public:
-	TSodokuBoard(void);
+	TSodokuBoard(FILE *pFile);
 	~TSodokuBoard(void);
 
-private:
-struct row
-{
+	// output methods
+	void PrintBoard();
 
-} board_rows[9];
+	void Solve();
+	bool isSolved();
+
+private:
+	std::vector<TSodokuCell> myBoard;
+
+	// algorithm methods
+	TSodokuCell &operator[](int pos);
 };
 

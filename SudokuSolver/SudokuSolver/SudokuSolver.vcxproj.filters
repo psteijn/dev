@@ -27,6 +27,9 @@
     <ClInclude Include="TSodokuBoard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TSodokuCell.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -38,8 +41,13 @@
     <ClCompile Include="TSodokuBoard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TSodokuCell.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="input.sok" />
+    <None Include="input_hard.sok" />
+    <None Include="input_easy.sok" />
   </ItemGroup>
 </Project>

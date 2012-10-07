@@ -2,8 +2,8 @@
 //
 
 #include "stdafx.h"
-#include <string>
 
+#include "TSodokuBoard.h"
 
 void SolveSodoku(TCHAR *);
 
@@ -18,11 +18,11 @@ int _tmain(int argc, _TCHAR* argv[])
 		return 1;
 	}
 
-	std::wstring input_file(argv[1]);
+	std::string input_file(argv[1]);
 
 	FILE *pFile;
 	
-	errno_t error = _tfopen_s(&pFile, input_file.c_str(), L"r");
+	errno_t error = _tfopen_s(&pFile, input_file.c_str(), _TEXT("r"));
 
 	if (error != 0)
 	{
@@ -33,19 +33,16 @@ int _tmain(int argc, _TCHAR* argv[])
 		return 2;
 	}
 
-	// 9x9 with newlines on the first 8 rows
-	TCHAR buffer[10*9];
+	TSodokuBoard tsb(pFile);
 
-	size_t count = fread(buffer, sizeof(TCHAR), 10*9-2, pFile);
-
-	buffer[88] = '\0';
-
-	_tprintf(_TEXT("%s"), buffer);
-
-	SolveSodoku(buffer);
+	tsb.PrintBoard();
 
 	fclose(pFile);
 
+	tsb.Solve();
+
+	tsb.PrintBoard();
+	
 #if _DEBUG
 		__debugbreak();
 #endif
